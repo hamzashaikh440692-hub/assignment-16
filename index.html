@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Grid Layout</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Lato", Arial, sans-serif;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    .layout > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .header { grid-area: header; background: #101729; }
+    .menu   { grid-area: menu;   background: #ef3b4f; }
+    .hero   { grid-area: hero;   background: #4b86c6; }
+    .main   { grid-area: main;   background: #25344d; }
+    .banner { grid-area: banner; background: #fdd067; color: #111; }
+    .extra  { grid-area: extra;  background: #4cbf99; color: #111; }
+    .image  { grid-area: image;  background: #c0e5e5; color: #111; }
+
+    /* ===== MOBILE ===== */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "menu"
+        "hero"
+        "main"
+        "banner"
+        "extra"
+        "image";
+      grid-template-rows: 63px 63px 157px 157px 118px 118px 118px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* ===== TABLET ===== */
+    @media (min-width: 600px) and (max-width: 991px) {
+      .layout {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+          "header header header header"
+          "hero   hero   hero   hero"
+          "menu   main   main   main"
+          "menu   banner banner banner"
+          "menu   extra  extra  image";
+        grid-template-rows: 63px 244px 243px 121px 122px;
+      }
+    }
+
+    /* ===== DESKTOP ===== */
+    @media (min-width: 992px) {
+      .layout {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+          "header menu   menu   menu"
+          "hero   hero   hero   hero"
+          "main   main   .      image"
+          "main   main   .      extra"
+          "banner banner banner banner";
+        grid-template-rows: 63px 366px 121px 121px 122px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">Header</div>
+    <div class="menu">Menu</div>
+    <div class="hero">Hero</div>
+    <div class="main">Main</div>
+    <div class="banner">Banner</div>
+    <div class="extra">Extra</div>
+    <div class="image">Image</div>
+  </div>
+</body>
+</html>
